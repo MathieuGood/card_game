@@ -1,0 +1,23 @@
+[project]
+name = "card_game"
+version = "0.1.0"
+description = "Implementation of a card game"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+authors = [{ name = "Card Game Developer", email = "dev@example.com" }]
+keywords = ["game", "cli", "card-game"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: End Users/Desktop",
+    "Topic :: Games/Entertainment",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.scripts]
+balatro = "main:main"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
