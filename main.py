@@ -23,6 +23,7 @@ clubs = Clubs()
 
 king = King()
 queen = Queen()
+jack = Jack()
 
 three = NumberRank(3)
 
@@ -39,10 +40,26 @@ three_diamonds = Card(three, diamonds)
 
 hand = Hand(10)
 # hand.add(deck.deal(5))
-hand.add([king_hearts, queen_diamonds, three_spades, three_clubs, three_diamonds])
-
+hand.add(
+    [
+        king_hearts,
+        queen_diamonds,
+        three_spades,
+        three_clubs,
+        three_diamonds,
+        king_spades,
+    ]
+)
+print("\n --------------------------------- \n")
 print(hand)
+print("\n --------------------------------- \n")
 
 
 play_resolver = PlayResolver(hand)
-print(play_resolver.find_pairs())
+print(play_resolver.find_pair())
+print("\n --------------------------------- \n")
+print(play_resolver.find_three_of_a_kind())
+print("\n --------------------------------- \n")
+
+play_resolver.keep_playable_hands()
+print(play_resolver.resolved_hands)
