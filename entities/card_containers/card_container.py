@@ -1,13 +1,15 @@
 from entities.cards.card import Card
 
 
-class Hand:
+class CardContainer:
 
-    def __init__(self):
+    def __init__(self, size: int):
         self.cards: list[Card] = []
+        self.size = size
+        self.name: str = "Container"
 
     def __repr__(self) -> str:
-        return f"Hand with {len(self.cards)} cards:\n" + "\n".join(
+        return f"{self.name} with {len(self.cards)} cards:\n" + "\n".join(
             str(card) for card in enumerate(self.cards)
         )
 
@@ -20,7 +22,6 @@ class Hand:
             raise ValueError("Invalid type, must be Card or list of Card")
 
     def draw(self, card_index: int) -> Card:
-        print(f"Card {self.cards[card_index]} drawn from hand")
         return self.cards.pop(card_index)
 
     def move_after(self, card_index_to_move: int, card_index_to_move_after: int):

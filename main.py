@@ -1,6 +1,7 @@
-from entities.hand import Hand
+from entities.card_containers.hand import Hand
 from entities.deck import Deck
 from entities.cards.card import Card
+from entities.play_resolver import PlayResolver
 from entities.ranks.jack import Jack
 from entities.ranks.king import King
 from entities.ranks.queen import Queen
@@ -16,25 +17,32 @@ print(deck)
 # deck.print_all_cards()
 
 spades = Spades()
+hearts = Hearts()
+diamonds = Diamonds()
+clubs = Clubs()
+
 king = King()
+queen = Queen()
 
 three = NumberRank(3)
-hearts = Hearts()
+
 
 king_spades = Card(king, spades)
+king_hearts = Card(king, hearts)
+queen_diamonds = Card(queen, diamonds)
 three_hearts = Card(three, hearts)
+three_hearts2 = Card(three, hearts)
+three_spades = Card(three, spades)
+three_clubs = Card(three, clubs)
+three_diamonds = Card(three, diamonds)
 
-hand = Hand()
+
+hand = Hand(10)
 # hand.add(deck.deal(5))
-hand.add(
-    [three_hearts, king_spades, three_hearts, three_hearts, three_hearts, three_hearts]
-)
+hand.add([king_hearts, queen_diamonds, three_spades, three_clubs, three_diamonds])
 
-# hand.add([king_spades, three_hearts])
 print(hand)
 
-# drawn_card = hand.draw(0)
-# print(hand)
 
-hand.move_before(1, 3)
-print(hand)
+play_resolver = PlayResolver(hand)
+print(play_resolver.find_pairs())

@@ -18,9 +18,6 @@ class Card:
         self.suit = suit
         self.rank = rank
 
-    def is_greater_than(self, other_card: "Card"):
-        return self.value > other_card.value
-
     def __repr__(self) -> str:
         return f"{self.rank} {self.suit}"
 
@@ -30,3 +27,12 @@ class Card:
             and self.suit == value.suit
             and self.rank == value.rank
         )
+
+    def equal_rank(self, other_card: "Card") -> bool:
+        return self.rank == other_card.rank
+
+    def equal_suit(self, other_card: "Card") -> bool:
+        return self.suit == other_card.suit
+
+    def is_greater_than(self, other_card: "Card"):
+        return self.value > other_card.value
